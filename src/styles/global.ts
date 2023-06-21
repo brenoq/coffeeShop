@@ -12,11 +12,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    width: 144rem;
+    margin: 0 auto;
     background: ${(props) => props.theme.background};
     -webkit-font-smoothing: antialiased;
   }
 
-  body, input, button, h1, p {
+  body, input, button, h1, h2, p {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     line-height: 130%;

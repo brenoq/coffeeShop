@@ -21,8 +21,6 @@ export const HomeContainer = styled.section`
     top: 0;
     bottom: 0;
 
-    width: 100%;
-
     filter: blur(88px);
   }
 
@@ -32,7 +30,8 @@ export const HomeContainer = styled.section`
     align-items: center;
     justify-content: center;
 
-    margin-top: 9.4rem;
+    height: 54.4rem;
+    margin-bottom: 5.4rem;
 
     h1 {
       width: 58.8rem;
