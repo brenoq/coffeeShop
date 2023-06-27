@@ -1,5 +1,6 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { CoffeFormContainer } from './styles'
+import { InputNumber } from '../../../../components/InputNumber'
 
 interface CoffeeType {
   type: string
@@ -19,15 +20,7 @@ export function CoffeeForm(props: CoffeeType) {
           <span>R$</span>
           9,90
         </div>
-        <div className="quantity">
-          <button>
-            <Minus size={14} weight="bold" />
-          </button>
-          <span>1</span>
-          <button>
-            <Plus size={14} weight="bold" />
-          </button>
-        </div>
+        <InputNumber />
         <button>
           <ShoppingCart size={22} weight="fill" />
         </button>
