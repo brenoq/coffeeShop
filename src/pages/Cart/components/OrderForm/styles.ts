@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const OrderFormContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
 
   width: 64rem;
 
@@ -60,20 +61,7 @@ export const OrderFormContainer = styled.div`
       grid-column-gap: 12px;
       grid-row-gap: 16px;
 
-      input {
-        height: 4.2rem;
-        border-radius: 4px;
-        padding: 1.2rem;
-
-        border: 1px solid ${(props) => props.theme['base-button']};
-        background: ${(props) => props.theme['base-input']};
-
-        color: ${(props) => props.theme['base-label']};
-        font-size: 1.4rem;
-        font-family: 'Roboto', sans-serif;
-      }
-
-      #div1 {
+      div > #div1 {
         grid-area: 1 / 1 / 2 / 2;
       }
       #div2 {

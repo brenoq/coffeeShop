@@ -6,6 +6,7 @@ import {
   Money,
 } from 'phosphor-react'
 import { OrderFormContainer } from '../OrderForm/styles'
+import { InputText } from '../../../../components/InputText'
 
 export function OrderForm() {
   return (
@@ -22,18 +23,18 @@ export function OrderForm() {
         </div>
 
         <div className="main">
-          <input id="div1" type="text" name="cep" placeholder="CEP" />
-          <input id="div2" type="text" name="rua" placeholder="Rua" />
-          <input id="div3" type="text" name="numero" placeholder="Número" />
-          <input
+          <InputText id="div1" name="cep" place="CEP" />
+          <InputText id="div2" name="rua" place="Rua" />
+          <InputText id="div3" name="numero" place="Número" />
+          <InputText
             id="div4"
-            type="text"
             name="complemento"
-            placeholder="Complemento"
+            place="Complemento"
+            isOptional
           />
-          <input id="div5" type="text" name="bairro" placeholder="Bairro" />
-          <input id="div6" type="text" name="cidade" placeholder="Cidade" />
-          <input id="div7" type="text" name="uf" placeholder="UF" />
+          <InputText id="div5" name="bairro" place="Bairro" />
+          <InputText id="div6" name="cidade" place="Cidade" />
+          <InputText id="div7" name="uf" place="UF" />
         </div>
       </div>
 
