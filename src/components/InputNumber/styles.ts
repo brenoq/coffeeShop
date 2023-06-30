@@ -42,5 +42,13 @@ export const InputContainer = styled.div`
     border: none;
 
     color: ${(props) => props.theme.purple};
+
+    cursor: pointer;
+
+    transition: 300ms;
+  }
+
+  button:hover {
+    color: ${(props) => props.theme['purple-dark']};
   }
 `

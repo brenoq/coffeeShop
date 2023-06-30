@@ -86,10 +86,18 @@ export const CoffeFormContainer = styled.div`
       width: 3.8rem;
       height: 3.8rem;
 
-      background: ${(props) => props.theme['purple-dark']};
+      background: ${(props) => props.theme.purple};
       color: ${(props) => props.theme['base-card']};
 
+      cursor: pointer;
+
       border-radius: 6px;
+
+      transition: 300ms;
+    }
+
+    & > button:hover {
+      background: ${(props) => props.theme['purple-dark']};
     }
 
     .value {
