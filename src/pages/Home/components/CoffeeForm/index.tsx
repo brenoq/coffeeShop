@@ -20,7 +20,7 @@ export function CoffeeForm(props: CoffeeType) {
           <span>R$</span>
           9,90
         </div>
-        <InputNumber />
+        <InputNumber size={3.8} />
         <button>
           <ShoppingCart size={22} weight="fill" />
         </button>

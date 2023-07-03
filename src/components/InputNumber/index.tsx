@@ -2,7 +2,11 @@ import { Minus, Plus } from 'phosphor-react'
 import { InputContainer } from './styles'
 import { useState } from 'react'
 
-export function InputNumber() {
+interface InputNumberProps {
+  size: number
+}
+
+export function InputNumber({ size }: InputNumberProps) {
   const [quantity, setQuantity] = useState(1)
 
   function handleChangeQuantity(buttonType: string) {
@@ -16,7 +20,7 @@ export function InputNumber() {
   }
 
   return (
-    <InputContainer>
+    <InputContainer inputHeight={size}>
       <button onClick={() => handleChangeQuantity('minus')}>
         <Minus size={14} weight="bold" id="minus" />
       </button>

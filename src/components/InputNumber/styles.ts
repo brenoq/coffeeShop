@@ -1,6 +1,10 @@
 import { styled } from 'styled-components'
 
-export const InputContainer = styled.div`
+interface inputVariants {
+  inputHeight: number
+}
+
+export const InputContainer = styled.div<inputVariants>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,12 +13,10 @@ export const InputContainer = styled.div`
   gap: 4px;
 
   width: 7.2rem;
-  height: 3.8rem;
+  height: ${(props) => props.inputHeight}rem;
 
   background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
-
-  margin-left: 2.3rem;
 
   span {
     display: flex;

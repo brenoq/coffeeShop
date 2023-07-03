@@ -109,6 +109,8 @@ export const CoffeFormContainer = styled.div`
       font-weight: 800;
       font-size: 2.4rem;
 
+      margin-right: 2.3rem;
+
       span {
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
