@@ -61,7 +61,7 @@ export const OrderFormContainer = styled.div`
       grid-column-gap: 12px;
       grid-row-gap: 16px;
 
-      div > #div1 {
+      #div1 {
         grid-area: 1 / 1 / 2 / 2;
       }
       #div2 {
@@ -89,6 +89,7 @@ export const OrderFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3.2rem;
+    margin-bottom: 3.2rem;
 
     padding: 4rem;
 
