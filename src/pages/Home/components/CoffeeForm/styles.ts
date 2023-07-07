@@ -17,23 +17,26 @@ export const CoffeFormContainer = styled.div`
     margin-top: -2rem;
   }
 
-  & > p {
-    padding: 4px 8px;
+  .tags {
+    display: flex;
+    gap: 0.4rem;
     margin-top: 1.2rem;
+    & > span {
+      padding: 4px 8px;
 
-    width: 81px;
-    height: 21px;
+      height: 21px;
 
-    background: ${(props) => props.theme['yellow-light']};
-    border-radius: 100px;
+      background: ${(props) => props.theme['yellow-light']};
+      border-radius: 100px;
 
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
 
-    text-transform: uppercase;
+      text-transform: uppercase;
 
-    color: ${(props) => props.theme['yellow-dark']};
+      color: ${(props) => props.theme['yellow-dark']};
+    }
   }
 
   .description {
