@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 interface inputVariants {
-  inputHeight: number
+  size: number
 }
 
 export const InputContainer = styled.div<inputVariants>`
@@ -13,7 +13,7 @@ export const InputContainer = styled.div<inputVariants>`
   gap: 4px;
 
   width: 7.2rem;
-  height: ${(props) => props.inputHeight}rem;
+  height: ${(props) => props.size}rem;
 
   background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
