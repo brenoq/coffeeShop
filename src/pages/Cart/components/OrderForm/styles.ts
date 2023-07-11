@@ -150,7 +150,7 @@ export const OrderFormContainer = styled.div`
         color: ${(props) => props.theme['base-text']};
         font-size: 1.2rem;
         font-family: 'Roboto', sans-serif;
-        line-height: 160%;
+        line-height: 0;
 
         cursor: pointer;
 

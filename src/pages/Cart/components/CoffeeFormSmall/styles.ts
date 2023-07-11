@@ -66,7 +66,7 @@ export const CoffeFormSmallContainer = styled.div`
             font-size: 1.2rem;
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
-            line-height: 160%;
+            line-height: 0;
           }
 
           transition: 300ms;
