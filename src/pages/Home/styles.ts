@@ -94,7 +94,7 @@ export const TagContainer = styled.div<tagVariants>`
   }
 
   span {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 130%;
