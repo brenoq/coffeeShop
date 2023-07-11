@@ -49,14 +49,14 @@ export const OrderSummaryContainer = styled.div`
         color: ${(props) => props.theme['base-text']};
 
         font-size: 1.4rem;
-        font-family: Roboto;
+        font-family: 'Roboto', sans-serif;
         font-weight: 400;
 
         span {
           color: ${(props) => props.theme['base-text']};
 
           font-size: 1.6rem;
-          font-family: Roboto;
+          font-family: 'Roboto', sans-serif;
           font-weight: 400;
         }
       }
@@ -65,14 +65,14 @@ export const OrderSummaryContainer = styled.div`
         color: ${(props) => props.theme['base-subtitle']};
 
         font-size: 2rem;
-        font-family: Roboto;
+        font-family: 'Roboto', sans-serif;
         font-weight: 700;
 
         span {
           color: ${(props) => props.theme['base-subtitle']};
 
           font-size: 2rem;
-          font-family: Roboto;
+          font-family: 'Roboto', sans-serif;
           font-weight: 700;
         }
       }
@@ -93,7 +93,7 @@ export const OrderSummaryContainer = styled.div`
 
         color: ${(props) => props.theme.white};
         font-size: 1.4rem;
-        font-family: Roboto;
+        font-family: 'Roboto', sans-serif;
         font-weight: 700;
         line-height: 160%;
 
@@ -106,5 +106,23 @@ export const OrderSummaryContainer = styled.div`
         background: ${(props) => props.theme['yellow-dark']};
       }
     }
+  }
+
+  .coffeeCardEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 4rem;
+
+    border-radius: 0.6rem 4.4rem;
+    background: var(--base-card, #f3f2f2);
+
+    color: ${(props) => props.theme['base-label']};
+
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
   }
 `
