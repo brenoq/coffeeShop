@@ -5,7 +5,9 @@ interface InputTextProps {
   id: string
   name: string
   place: string
+  value?: string
   isOptional?: boolean
+  onGetAddress?: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
 }
 
 export function InputText({
@@ -13,6 +15,8 @@ export function InputText({
   name,
   place,
   isOptional = false,
+  onGetAddress,
+  value,
 }: InputTextProps) {
   const [optional, setOptional] = useState(isOptional)
 
@@ -24,9 +28,11 @@ export function InputText({
     <InputTextContainer id={id}>
       <input
         onChange={handleChangeInfo}
+        onBlur={onGetAddress}
         type="text"
         name={name}
         placeholder={place}
+        defaultValue={value}
       />
       <span>{optional ? 'Opcional' : ''}</span>
     </InputTextContainer>

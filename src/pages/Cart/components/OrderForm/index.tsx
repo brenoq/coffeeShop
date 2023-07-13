@@ -7,8 +7,11 @@ import {
 } from 'phosphor-react'
 import { OrderFormContainer } from '../OrderForm/styles'
 import { InputText } from '../../../../components/InputText'
+import { useCart } from '../../../../hooks/useCart'
 
 export function OrderForm() {
+  const { address, handleGetAddress } = useCart()
+
   return (
     <OrderFormContainer>
       <h1>Complete seu pedido</h1>
@@ -23,8 +26,19 @@ export function OrderForm() {
         </div>
 
         <div className="main">
-          <InputText id="div1" name="cep" place="CEP" />
-          <InputText id="div2" name="rua" place="Rua" />
+          <InputText
+            onGetAddress={handleGetAddress}
+            id="div1"
+            name="cep"
+            place="CEP"
+            value={address?.cep}
+          />
+          <InputText
+            id="div2"
+            name="rua"
+            place="Rua"
+            value={address?.logradouro}
+          />
           <InputText id="div3" name="numero" place="Número" />
           <InputText
             id="div4"
@@ -32,9 +46,19 @@ export function OrderForm() {
             place="Complemento"
             isOptional
           />
-          <InputText id="div5" name="bairro" place="Bairro" />
-          <InputText id="div6" name="cidade" place="Cidade" />
-          <InputText id="div7" name="uf" place="UF" />
+          <InputText
+            id="div5"
+            name="bairro"
+            place="Bairro"
+            value={address?.bairro}
+          />
+          <InputText
+            id="div6"
+            name="cidade"
+            place="Cidade"
+            value={address?.localidade}
+          />
+          <InputText id="div7" name="uf" place="UF" value={address?.uf} />
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react'
+import { ChangeEvent, ReactNode, createContext, useState } from 'react'
 import { produce } from 'immer'
 
 export interface Coffees {
@@ -14,13 +14,28 @@ export interface CartItem extends Coffees {
   quantity: number
 }
 
+export interface AddressProps {
+  bairro: string
+  cep: string
+  complemento: string
+  ddd: string
+  gia: string
+  ibge: string
+  localidade: string
+  logradouro: string
+  siafi: string
+  uf: string
+}
+
 interface CartContextType {
   cartItems: CartItem[]
   cartQuantity: number
   formattedTotalItems: string
   fullPrice: string
+  address?: AddressProps
   addCoffeeToCart: (coffee: CartItem) => void
   removeCoffeeFromCart: (cartItemId: number) => void
+  handleGetAddress: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
   changeCartItemQuantity: (
     cartItemId: number,
     type: 'increase' | 'decrease',
@@ -35,6 +50,7 @@ interface CartContextProviderProps {
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [address, setAddress] = useState<AddressProps>()
   const cartQuantity = cartItems.length
 
   const totalItems = cartItems.reduce((totalItems, item) => {
@@ -50,6 +66,27 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     style: 'decimal',
     minimumFractionDigits: 2,
   })
+
+  async function handleGetAddress(e: ChangeEvent<HTMLInputElement>) {
+    const cep = e.target.value
+
+    if (e.target.name === 'cep') {
+      if (e.target.value.length === 8) {
+        return await fetch(`https://viacep.com.br/ws/${cep}/json/`, {
+          method: 'GET',
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            if (json.erro === true) {
+              console.log('O CEP informado não foi encontrado!')
+              e.target.focus()
+            } else {
+              setAddress(json)
+            }
+          })
+      }
+    }
+  }
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeeAlreadyExistsInCart = cartItems.findIndex(
@@ -106,10 +143,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         cartItems,
         addCoffeeToCart,
         cartQuantity,
+        address,
         changeCartItemQuantity,
         removeCoffeeFromCart,
         formattedTotalItems,
         fullPrice,
+        handleGetAddress,
       }}
     >
       {children}
