@@ -6,6 +6,7 @@ interface tagVariants {
 
 export const HomeContainer = styled.section`
   padding: 0 16rem;
+  margin-bottom: 3.2rem;
 
   display: flex;
   flex-direction: column;
