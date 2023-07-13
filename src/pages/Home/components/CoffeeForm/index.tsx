@@ -41,7 +41,7 @@ export function CoffeeForm({
 
   return (
     <CoffeFormContainer>
-      <img src={`/src/assets/coffee/${photo}.png`} alt={photo} />
+      <img src={`/coffee/${photo}.png`} alt={photo} />
       <div className="tags">
         {tags.map((tag) => (
           <span key={tag}>{tag}</span>

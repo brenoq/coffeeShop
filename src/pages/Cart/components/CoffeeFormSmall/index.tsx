@@ -34,7 +34,7 @@ export function CoffeeFormSmall({ type, cartItem }: CoffeeType) {
     <>
       <CoffeFormSmallContainer>
         <div className="description">
-          <img src={`/src/assets/coffee/${type}.png`} alt={type} />
+          <img src={`/coffee/${type}.png`} alt={type} />
           <div className="coffee">
             <p>{cartItem.name}</p>
             <div>
