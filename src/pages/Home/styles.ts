@@ -11,14 +11,16 @@ export const HomeContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   position: relative;
 
   .bannerBg {
+    width: 112rem;
     position: absolute;
-    left: 0;
+    left: 16rem;
     right: 0;
-    top: 0;
+    top: 7rem;
     bottom: 0;
 
     filter: blur(88px);
