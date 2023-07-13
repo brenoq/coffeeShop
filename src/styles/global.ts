@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    width: 144rem;
+    width: 100%;
     margin: 0 auto;
     background: ${(props) => props.theme.background};
     -webkit-font-smoothing: antialiased;
