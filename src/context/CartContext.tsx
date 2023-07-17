@@ -1,4 +1,10 @@
-import { ChangeEvent, ReactNode, createContext, useState } from 'react'
+import {
+  ChangeEvent,
+  MouseEvent,
+  ReactNode,
+  createContext,
+  useState,
+} from 'react'
 import { produce } from 'immer'
 
 export interface Coffees {
@@ -15,16 +21,14 @@ export interface CartItem extends Coffees {
 }
 
 export interface AddressProps {
-  bairro: string
-  cep: string
-  complemento: string
-  ddd: string
-  gia: string
-  ibge: string
-  localidade: string
-  logradouro: string
-  siafi: string
-  uf: string
+  bairro?: string
+  cep?: string
+  complemento?: string
+  numero?: string
+  logradouro?: string
+  localidade?: string
+  uf?: string
+  pagamento?: string
 }
 
 interface CartContextType {
@@ -36,6 +40,8 @@ interface CartContextType {
   addCoffeeToCart: (coffee: CartItem) => void
   removeCoffeeFromCart: (cartItemId: number) => void
   handleGetAddress: (e: ChangeEvent<HTMLInputElement>) => Promise<void>
+  handleSelectPayment: (e: MouseEvent) => void
+  handleConfirmOrder: () => void
   changeCartItemQuantity: (
     cartItemId: number,
     type: 'increase' | 'decrease',
@@ -67,6 +73,30 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     minimumFractionDigits: 2,
   })
 
+  function handleConfirmOrder() {
+    setCartItems([])
+  }
+
+  function handleSelectPayment(e: MouseEvent) {
+    const target = e.target as HTMLInputElement
+    let value = target.id
+
+    if (target.name === 'payment') {
+      switch (value) {
+        case 'credit':
+          value = 'Cartão de Crédito'
+          break
+        case 'bank':
+          value = 'Cartão de Débito'
+          break
+        case 'money':
+          value = 'Dinheiro'
+          break
+      }
+      setAddress((state) => ({ ...state, pagamento: value }))
+    }
+  }
+
   async function handleGetAddress(e: ChangeEvent<HTMLInputElement>) {
     const cep = e.target.value
 
@@ -81,10 +111,33 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               console.log('O CEP informado não foi encontrado!')
               e.target.focus()
             } else {
-              setAddress(json)
+              const {
+                cep,
+                bairro,
+                complemento,
+                numero,
+                logradouro,
+                localidade,
+                uf,
+              } = json
+
+              setAddress({
+                cep,
+                bairro,
+                complemento,
+                numero,
+                logradouro,
+                localidade,
+                uf,
+              })
             }
           })
       }
+    } else {
+      const field = e.target.name as keyof AddressProps
+      const value = e.target.value
+
+      setAddress((state) => ({ ...state, [field]: value }))
     }
   }
 
@@ -149,6 +202,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         formattedTotalItems,
         fullPrice,
         handleGetAddress,
+        handleSelectPayment,
+        handleConfirmOrder,
       }}
     >
       {children}

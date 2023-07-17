@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { useCart } from '../../../../hooks/useCart'
 import { CoffeeFormSmall } from '../CoffeeFormSmall'
 import { OrderSummaryContainer } from './styles'
@@ -9,7 +10,13 @@ export function OrderSummary() {
     style: 'decimal',
     minimumFractionDigits: 2,
   })
-  const { cartItems, formattedTotalItems, fullPrice, cartQuantity } = useCart()
+  const {
+    cartItems,
+    formattedTotalItems,
+    fullPrice,
+    cartQuantity,
+    handleConfirmOrder,
+  } = useCart()
 
   return cartQuantity > 0 ? (
     <OrderSummaryContainer>
@@ -41,7 +48,9 @@ export function OrderSummary() {
           </div>
         </div>
         <div className="footer">
-          <button>CONFIRMAR PEDIDO</button>
+          <NavLink onClick={handleConfirmOrder} to="/order">
+            <button>CONFIRMAR PEDIDO</button>
+          </NavLink>
         </div>
       </div>
     </OrderSummaryContainer>

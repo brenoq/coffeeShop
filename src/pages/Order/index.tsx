@@ -2,8 +2,11 @@ import orderImg from '../../assets/illustration.png'
 
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { OrderContainer, TagContainer } from './styles'
+import { useCart } from '../../hooks/useCart'
 
 export function Order() {
+  const { address } = useCart()
+
   return (
     <OrderContainer>
       <div className="orderInfo">
@@ -16,8 +19,12 @@ export function Order() {
             </TagContainer>
             <div>
               <span>Entrega em </span>
-              <strong>Rua João Daniel Martinelli, 102</strong>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <strong>
+                Rua {address?.logradouro}, {address?.numero}
+              </strong>
+              <p>
+                {address?.localidade} - {address?.bairro}, {address?.uf}
+              </p>
             </div>
           </div>
           <div>
@@ -35,7 +42,7 @@ export function Order() {
             </TagContainer>
             <div>
               <p>Pagamento na entrega</p>
-              <strong>Cartão de Crédito</strong>
+              <strong>{address?.pagamento}</strong>
             </div>
           </div>
         </div>

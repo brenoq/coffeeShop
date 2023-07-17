@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { InputTextContainer } from './styles'
+import { useCart } from '../../hooks/useCart'
 
 interface InputTextProps {
   id: string
@@ -19,6 +20,11 @@ export function InputText({
   value,
 }: InputTextProps) {
   const [optional, setOptional] = useState(isOptional)
+  const { address } = useCart()
+
+  useEffect(() => {
+    address?.complemento ? setOptional(false) : setOptional(isOptional)
+  }, [address?.complemento, isOptional])
 
   function handleChangeInfo(e: ChangeEvent<HTMLInputElement>) {
     e.target.value.length > 0 ? setOptional(false) : setOptional(isOptional)

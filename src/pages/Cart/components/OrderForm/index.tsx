@@ -10,7 +10,7 @@ import { InputText } from '../../../../components/InputText'
 import { useCart } from '../../../../hooks/useCart'
 
 export function OrderForm() {
-  const { address, handleGetAddress } = useCart()
+  const { address, handleGetAddress, handleSelectPayment } = useCart()
 
   return (
     <OrderFormContainer>
@@ -39,11 +39,19 @@ export function OrderForm() {
             place="Rua"
             value={address?.logradouro}
           />
-          <InputText id="div3" name="numero" place="Número" />
           <InputText
+            onGetAddress={handleGetAddress}
+            id="div3"
+            name="numero"
+            place="Número"
+            value={address?.numero}
+          />
+          <InputText
+            onGetAddress={handleGetAddress}
             id="div4"
             name="complemento"
             place="Complemento"
+            value={address?.complemento}
             isOptional
           />
           <InputText
@@ -75,19 +83,37 @@ export function OrderForm() {
 
         <div className="main">
           <div>
-            <input type="radio" name="payment" id="credit" />
+            <input
+              onClick={handleSelectPayment}
+              type="radio"
+              name="payment"
+              id="credit"
+              defaultChecked={address?.pagamento === 'Cartão de Crédito'}
+            />
             <label htmlFor="credit">
               <CreditCard size={16} /> CARTÃO DE CRÉDITO
             </label>
           </div>
           <div>
-            <input type="radio" name="payment" id="bank" />
+            <input
+              onClick={handleSelectPayment}
+              type="radio"
+              name="payment"
+              id="bank"
+              defaultChecked={address?.pagamento === 'Cartão de Débito'}
+            />
             <label htmlFor="bank">
               <Bank size={16} /> CARTÃO DE DÉBITO
             </label>
           </div>
           <div>
-            <input type="radio" name="payment" id="money" />
+            <input
+              onClick={handleSelectPayment}
+              type="radio"
+              name="payment"
+              id="money"
+              defaultChecked={address?.pagamento === 'Dinheiro'}
+            />
             <label htmlFor="money">
               <Money size={16} /> DINHEIRO
             </label>
